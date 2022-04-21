@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "references": [
+    { "path": "../headless-inspector" },
+    { "path": "../headless-inspector-cdp" }
+  ],
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "**/*.test.*"]
+}

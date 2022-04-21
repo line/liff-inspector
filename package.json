@@ -1,0 +1,33 @@
+{
+  "name": "liff-inspector",
+  "workspaces": [
+    "packages/headless-inspector-core",
+    "packages/headless-inspector-cdp",
+    "packages/headless-inspector",
+    "packages/liff-inspector"
+  ],
+  "scripts": {
+    "build": "npm run clean -ws && npm run build -ws",
+    "start:hi": "npm run build && npm run serve -w @line/headless-inspector",
+    "start:hi:https": "npm run build && npm run serve -w @line/headless-inspector -- --https",
+    "start:li": "npm run build && npm run serve -w @line/liff-inspector",
+    "start:li:https": "npm run build && npm run serve -w @line/liff-inspector -- --key=../../localhost-key.pem --cert=../../localhost.pem",
+    "lint": "npm run lint -ws",
+    "test": "jest",
+    "format": "prettier --write .",
+    "test:watch": "npm run test -- --watch",
+    "code-check": "npm run lint && npm run build && npm run test",
+    "publish": "npm run code-check && npm run build && npm publish -ws --access public"
+  },
+  "devDependencies": {
+    "@types/jest": "27.4.1",
+    "@typescript-eslint/eslint-plugin": "5.19.0",
+    "@typescript-eslint/parser": "5.19.0",
+    "eslint": "8.13.0",
+    "eslint-config-prettier": "8.5.0",
+    "jest": "27.5.1",
+    "prettier": "2.6.2",
+    "ts-jest": "27.1.4",
+    "typescript": "4.6.3"
+  }
+}

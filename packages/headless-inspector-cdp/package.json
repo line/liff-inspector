@@ -1,0 +1,26 @@
+{
+  "name": "@line/headless-inspector-cdp",
+  "version": "0.0.8",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "@line/headless-inspector-core": "0.0.8"
+  },
+  "devDependencies": {
+    "devtools-protocol": "0.0.982423"
+  },
+  "scripts": {
+    "clean": "rm -rf dist ./tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "lint": "eslint src",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
+  },
+  "license": "Apache-2.0"
+}

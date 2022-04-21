@@ -1,0 +1,21 @@
+{
+  "name": "@line/headless-inspector-core",
+  "version": "0.0.8",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -rf dist ./tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "lint": "eslint src",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
+  },
+  "license": "Apache-2.0"
+}
