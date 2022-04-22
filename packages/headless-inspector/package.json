@@ -38,5 +38,9 @@
     "ts-loader": "9.2.8",
     "webpack": "5.72.0",
     "webpack-cli": "4.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/line/liff-inspector.git"
   }
 }

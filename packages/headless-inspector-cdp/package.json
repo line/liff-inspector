@@ -22,5 +22,9 @@
     "test": "jest",
     "test:watch": "npm run test -- --watch"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/line/liff-inspector.git"
+  }
 }
