@@ -1,16 +1,22 @@
 <div align="center">
-  <br>
   <h1>LIFF Inspector 🔬</h1>
   <strong>The universal DevTools for LIFF (WebView) browser</strong>
 </div>
+<br>
 
-LIFF Inspector is the official DevTools for LNE Frontend Framework that is integrated with the latest ChromeDevTools and built on top of the ChromeDevTools Protocol.
+LIFF Inspector is the official DevTools for LIFF(LNE Frontend Framework) that is integrated with the latest ChromeDevTools and built on top of the ChromeDevTools Protocol.
 
 | LIFF browser                                                                                                    | ChromeDevTools                                                                                                  |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | ![image](https://user-images.githubusercontent.com/22386678/164411108-526320d6-75f3-42a7-93a1-737c3deb23ff.png) | ![image](https://user-images.githubusercontent.com/22386678/164409862-ed739dec-fe6a-4ecc-98af-fc433c5ba5d1.png) |
 
+<br>
+
 ---
+
+<br>
+
+[日本語版](./README_ja.md)
 
 ## Getting Started
 
@@ -59,7 +65,9 @@ By default, LIFF Inspector Server starts a local server on `ws://localhost:9222`
 
 To eliminate mixed content, you need to serve LIFF Inspector Server over HTTPS (`wss://`). We have two recommended ways:
 
-1. Using ngrok to make LIFF Inspector Server public
+### Serve local server over HTTPS
+
+1. Using [ngrok](https://ngrok.com/) to make LIFF Inspector Server public
    1. Run ngrok
       ```sh
       $ ngrok http 9222
@@ -72,20 +80,24 @@ To eliminate mixed content, you need to serve LIFF Inspector Server over HTTPS (
 2. Running LIFF Inspector Server with HTTPS using mkcert
    - See the detail explanation: [How to use HTTPS for local development - web.dev](https://web.dev/how-to-use-local-https/)
 
+### Set HTTPS URL to LIFF Inspector Plugin
+
 Once LIFF Inspector Server runs over HTTPS, you need to specify its origin to LIFF Inspector Plugin.
 
 1. Use URL Search Parameter: `?li.origin=`
 
-Add `?li.origin=` query to the Endpoint URL of your LIFF App in [LINE Developers Console](https://developers.line.biz/console).
+   Add `?li.origin=` query to the Endpoint URL of your LIFF App in [LINE Developers Console](https://developers.line.biz/console).
 
-![image](https://user-images.githubusercontent.com/22386678/164425138-43c5bdcb-01b9-4107-9b8a-cc86cb65015f.png)
+   ![image](https://user-images.githubusercontent.com/22386678/164425138-43c5bdcb-01b9-4107-9b8a-cc86cb65015f.png)
 
-2. Use `origin` config
+2. Use `origin` config of LIFF Inspector Plugin
 
-```ts
-// Default origin: ws://localhost:9222
-liff.use(new LIFFInspectorPlugin({ origin: 'wss://xxx-xx-xx-xx.ngrok.io' }));
-```
+   ```ts
+   // Default origin: ws://localhost:9222
+   liff.use(new LIFFInspectorPlugin({ origin: 'wss://xxx-xx-xx-xx.ngrok.io' }));
+   ```
+
+### Priority
 
 LIFF Inspector Plugin attempts to connect to given origin in the order `li.origin` (1), `origin` config (2).
 
