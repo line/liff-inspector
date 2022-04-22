@@ -18,12 +18,11 @@ const main = () => {
   const { ssl } = parseArgv(process.argv);
 
   runServer({ port, devInfo, ssl }, () => {
-    console.log(
-      `### Headless Inspector ###
-Please add <script src="//${
-        privateIp || '{your IP address}'
-      }:9222/headless-inspector.js"></script> to the debug target application.`
-    );
+    console.log('\x1b[36m%s\x1b[0m', `Debugger listening on ${debugUrl}`);
+    console.log(`
+For help, see: https://github.com/line/liff-inspector/tree/main/packages/headless-inspector#readme
+
+`);
   });
 };
 

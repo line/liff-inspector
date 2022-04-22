@@ -34,12 +34,8 @@ const run = () => {
     () => {
       console.log('\x1b[36m%s\x1b[0m', `Debugger listening on ${debugUrl}`);
       console.log(`
-
-Add the debug URL to search query of your endpoint URL.
-(ex. https://your-liff-app.com?li.origin=${debugUrl})
-LINE Developers: https://developers.line.biz/console
-
-For help, see: https://github.com/line/liff-inspector#readme
+You need to serve this server over SSL/TLS
+For help, see: https://github.com/line/liff-inspector#important-liff-inspector-server-need-to-be-served-over-ssltls
 
 `);
     }
