@@ -18,6 +18,22 @@ LIFF Inspector は LIFF(LNE Frontend Framework)専用の公式 DevTools です�
 
 [English doc](./README.md)
 
+## TOC
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Example](#example)
+- [Roadmap](#roadmap)
+- [Contribution](#contribution)
+
+## Features
+
+📱 デバッグが無効化された LIFF Browser、WebView をデバッグできます
+
+🌍 リモートデバッグ機能
+
+🔬 ChromeDevTools の `Elements`,`Console`,`NetWork` タブをサポート
+
 ## Getting Started
 
 LIFF Inspector は２つのコンポーネントから構成されています。
@@ -114,6 +130,45 @@ connect(originFromURL ?? originFromConfig ?? defaultOrigin);
 ## Example
 
 See https://github.com/cola119/liff-inspector-example
+
+## Roadmap
+
+**Contributions Welcome!**
+
+### Elements Tab
+
+- [x] To display Elements
+- [x] To display overlays
+- [ ] To remove/add/edit Elements
+- [ ] To display styles
+
+### Console Tab
+
+- To display console logs
+  - [x] `console.log`
+  - [x] `console.warn`
+  - [x] `console.error`
+  - [x] `console.info`
+  - [ ] others
+- [ ] To execute local scripts
+
+### Network Tab
+
+- To display simple network logs
+  - Fetch/XHR
+    - [x] `fetch()`
+    - [x] `XMLHttpRequest`
+    - [ ] `sendBeacon()`
+    - [ ] others
+  - Others(JS/CSS/Img/Media/Font...)
+    - Technically difficult to intercept them...
+
+### Application Tab
+
+- [ ] LocalStorage
+- [ ] SessionStorage
+- [ ] Cookies
+- [ ] others
 
 ## Contribution
 
