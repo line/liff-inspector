@@ -1,6 +1,6 @@
 {
   "name": "@line/headless-inspector-cdp",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@line/headless-inspector-core": "0.0.9"
+    "@line/headless-inspector-core": "1.0.0"
   },
   "devDependencies": {
     "devtools-protocol": "0.0.982423"
