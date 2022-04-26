@@ -14,7 +14,8 @@
     "start:li:https": "npm run build && npm run serve -w @line/liff-inspector -- --key=../../localhost-key.pem --cert=../../localhost.pem",
     "lint": "npm run lint -ws",
     "test": "jest",
-    "format": "prettier --write .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "test:watch": "npm run test -- --watch",
     "code-check": "npm run lint && npm run build && npm run test",
     "publish": "npm run code-check && npm run build && npm publish -ws --access public"
