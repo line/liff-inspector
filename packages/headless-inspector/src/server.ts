@@ -103,7 +103,7 @@ export const runServer = (
   };
   const server = createServer(
     createApp((app) => {
-      app.use('/', express.static(path.resolve(__dirname, '../dist')));
+      app.use('/', express.static(path.resolve(__dirname, '../dist/umd')));
       app.get('/json', serveDevInfo);
       app.get('/json/list', serveDevInfo);
     }),
