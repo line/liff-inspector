@@ -1,4 +1,5 @@
 [![Check code health](https://github.com/line/liff-inspector/actions/workflows/code-check.yml/badge.svg)](https://github.com/line/liff-inspector/actions/workflows/code-check.yml)
+
 <div align="center">
   <h1>LIFF Inspector 🔬</h1>
   <strong>The universal DevTools for LIFF (WebView) browser</strong>
