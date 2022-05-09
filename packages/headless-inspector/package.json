@@ -1,6 +1,6 @@
 {
   "name": "@line/headless-inspector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/index.js",
   "unpkg": "dist/umd/headless-inspector.js",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "@line/headless-inspector-cdp": "1.0.1",
-    "@line/headless-inspector-core": "1.0.1",
+    "@line/headless-inspector-cdp": "1.0.2",
+    "@line/headless-inspector-core": "1.0.2",
     "express": "4.17.3",
     "selfsigned": "2.0.1",
     "ws": "8.5.0",
