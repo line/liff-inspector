@@ -164,7 +164,8 @@ const onConnection = (socket: ws, req: http.IncomingMessage, ssl: boolean) => {
   }
   log(`connection from ${type}, id: ${hiId}`);
   if (type === 'client') {
-    const protocol = ssl ? 'wss' : 'ws';
+    const isSecure = req.headers['x-forwarded-proto'] === 'https';
+    const protocol = isSecure || ssl ? 'wss' : 'ws';
     const url = `devtools://devtools/bundled/inspector.html?${protocol}=${req.headers.host}/?hi_id=${hiId}`;
     console.log('DevTools URL: \x1b[36m%s\x1b[0m', `${url}`);
   }
