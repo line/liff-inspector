@@ -83,9 +83,9 @@ By default, LIFF Inspector Server starts a local server on `ws://localhost:9222`
 
 To eliminate mixed content, you need to serve LIFF Inspector Server over HTTPS (`wss://`). We have two recommended ways:
 
-### Serve local server over HTTPS
+### 1. Serve local server over HTTPS via A or B
 
-1. Using [ngrok](https://ngrok.com/) to make LIFF Inspector Server public
+A. Using [ngrok](https://ngrok.com/) to make LIFF Inspector Server public
    1. Run ngrok
       ```sh
       $ ngrok http 9222
@@ -95,10 +95,10 @@ To eliminate mixed content, you need to serve LIFF Inspector Server over HTTPS (
       $ node -e "const res=$(curl -s -sS http://127.0.0.1:4040/api/tunnels); const url=new URL(res.tunnels[0].public_url); console.log('wss://'+url.host);"
       wss://xxxx-xxx-xxx.ngrok   # Copy this url
       ```
-2. Running LIFF Inspector Server with HTTPS using mkcert
+B. Running LIFF Inspector Server with HTTPS using mkcert
    - See the detail explanation: [How to use HTTPS for local development - web.dev](https://web.dev/how-to-use-local-https/)
 
-### Set HTTPS URL to LIFF Inspector Plugin
+### 2. Set HTTPS URL to LIFF Inspector Plugin
 
 Once LIFF Inspector Server runs over HTTPS, you need to specify its origin to LIFF Inspector Plugin.
 
