@@ -75,6 +75,20 @@ liff.init({ liffId: 'liff-xxxx' }).then(() => {
 });
 ```
 
+### 4. ChromeDevTools を開く
+
+`liff.init`完了後、LIFF Inspector Server は devtools の URL をコンソールに表示します。
+
+```diff
+$ npx @line/liff-inspector
+Debugger listening on ws://{IP Address}:9222
+
++ connection from client, id: xxx
++ DevTools URL: devtools://devtools/bundled/inspector.html?wss=8a6f-113-35-87-12.ngrok.io/?hi_id=xxx
+```
+
+`devtools://devtools/` で始まる URL を Google Chrome で開き、デバッグを開始してください。
+
 ## 重要: LIFF Inspector Server は SSL/TLS で暗号化される必要があります
 
 LIFF Inspector Server はデフォルト設定ではローカルサーバー `ws://localhost:9222` を立ち上げます。そしてデバッグ対象の LIFF アプリは HTTPS (`https://liff.line.me/xxx-yyy`) でホストされています。
@@ -82,7 +96,7 @@ LIFF Inspector Server はデフォルト設定ではローカルサーバー `ws
 
 Mixed content の問題を解消するために、LIFF Inspector Server は HTTPS (`wss://`) でホストされる必要があります。これを達成するために、以下の２つの方法をおすすめします。
 
-### HTTPS で LIFF Inspector Server を起動する
+### HTTPS で LIFF Inspector Server を起動する (1 または 2 の方法)
 
 1. [ngrok](https://ngrok.com/) を使い LIFF Inspector Server を外部公開する
    1. ngrok を実行
@@ -94,10 +108,13 @@ Mixed content の問題を解消するために、LIFF Inspector Server は HTTP
       $ node -e "const res=$(curl -s -sS http://127.0.0.1:4040/api/tunnels); const url=new URL(res.tunnels[0].public_url); console.log('wss://'+url.host);"
       wss://xxxx-xxx-xxx.ngrok   # Copy this url
       ```
+
+Or
+
 2. [mkcert](https://github.com/FiloSottile/mkcert) を使い LIFF Inspector Sever を HTTPS 化する
    - [How to use HTTPS for local development - web.dev](https://web.dev/how-to-use-local-https/) を参照してください。
 
-### HTTPS 化された URL を LIFF Inspector Plugin に設定する
+### HTTPS 化された URL を LIFF Inspector Plugin に設定する (1 または 2 の方法)
 
 LIFF Inspector Server が HTTPS 化された後、その URL を LIFF Inspector Plugin に設定する必要があります。
 
@@ -106,6 +123,8 @@ LIFF Inspector Server が HTTPS 化された後、その URL を LIFF Inspector 
    [LINE Developers Console](https://developers.line.biz/console) から以下のようにコールバック URL の末尾に`?li.origin=`を追加し、LIFF Inspector Server の URL を設定します
 
    ![image](https://user-images.githubusercontent.com/22386678/164425138-43c5bdcb-01b9-4107-9b8a-cc86cb65015f.png)
+
+Or
 
 2. LIFF Inspector Plugin の `origin` 設定を使う
 
