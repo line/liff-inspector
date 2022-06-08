@@ -75,13 +75,27 @@ liff.init({ liffId: 'liff-xxxx' }).then(() => {
 });
 ```
 
+### 4. Open ChromeDevTools
+
+After `liff.init`, LIFF Inspector Server shows the devtools URL for your LIFF App in console.
+
+```diff
+$ npx @line/liff-inspector
+Debugger listening on ws://{IP Address}:9222
+
++ connection from client, id: xxx
++ DevTools URL: devtools://devtools/bundled/inspector.html?wss=8a6f-113-35-87-12.ngrok.io/?hi_id=xxx
+```
+
+Open the URL starts with `devtools://devtools/` and enjoy debugging!
+
 ## Important: LIFF Inspector Server need to be served over SSL/TLS
 
 By default, LIFF Inspector Server starts a local server on `ws://localhost:9222`, and your LIFF App is served over HTTPS (`https://liff.line.me/xxx-yyy`). LIFF Inspector Plugin will try to connect to `ws://localhost:9222` from `https://liff.line.me/xxx-yyy` but this will fail due to [mixed content](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content).
 
 To eliminate mixed content, you need to serve LIFF Inspector Server over HTTPS (`wss://`). We have two recommended ways:
 
-### Serve local server over HTTPS
+### Serve local server over HTTPS via 1 or 2
 
 1. Using [ngrok](https://ngrok.com/) to make LIFF Inspector Server public
    1. Run ngrok
@@ -93,10 +107,13 @@ To eliminate mixed content, you need to serve LIFF Inspector Server over HTTPS (
       $ node -e "const res=$(curl -s -sS http://127.0.0.1:4040/api/tunnels); const url=new URL(res.tunnels[0].public_url); console.log('wss://'+url.host);"
       wss://xxxx-xxx-xxx.ngrok   # Copy this url
       ```
+
+Or
+
 2. Running LIFF Inspector Server with HTTPS using mkcert
    - See the detail explanation: [How to use HTTPS for local development - web.dev](https://web.dev/how-to-use-local-https/)
 
-### Set HTTPS URL to LIFF Inspector Plugin
+### Set HTTPS URL to LIFF Inspector Plugin via 1 or 2
 
 Once LIFF Inspector Server runs over HTTPS, you need to specify its origin to LIFF Inspector Plugin.
 
@@ -105,6 +122,8 @@ Once LIFF Inspector Server runs over HTTPS, you need to specify its origin to LI
    Add `?li.origin=` query to the Endpoint URL of your LIFF App in [LINE Developers Console](https://developers.line.biz/console).
 
    ![image](https://user-images.githubusercontent.com/22386678/164425138-43c5bdcb-01b9-4107-9b8a-cc86cb65015f.png)
+
+Or
 
 2. Use `origin` config of LIFF Inspector Plugin
 
