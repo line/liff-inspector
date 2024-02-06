@@ -17,9 +17,9 @@
     "@line/headless-inspector": "1.0.2",
     "@line/headless-inspector-cdp": "1.0.2",
     "express": "4.17.3",
-    "ts-loader": "9.2.8",
-    "webpack": "5.72.0",
-    "webpack-cli": "4.9.2",
+    "ts-loader": "9.5.1",
+    "webpack": "5.89.0",
+    "webpack-cli": "5.1.4",
     "ws": "8.5.0"
   },
   "devDependencies": {
