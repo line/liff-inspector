@@ -16,16 +16,16 @@
   "dependencies": {
     "@line/headless-inspector": "1.0.2",
     "@line/headless-inspector-cdp": "1.0.2",
-    "express": "4.17.3",
+    "express": "4.19.2",
     "ts-loader": "9.5.1",
-    "webpack": "5.89.0",
+    "webpack": "5.94.0",
     "webpack-cli": "5.1.4",
-    "ws": "8.5.0"
+    "ws": "8.18.0"
   },
   "devDependencies": {
     "@line/liff": "2.19.0",
-    "@types/express": "4.17.13",
-    "@types/ws": "8.5.3"
+    "@types/express": "4.17.21",
+    "@types/ws": "8.5.12"
   },
   "scripts": {
     "clean": "rm -rf dist ./tsconfig.tsbuildinfo",
