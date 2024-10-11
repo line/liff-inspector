@@ -16,7 +16,7 @@
   "dependencies": {
     "@line/headless-inspector": "1.0.2",
     "@line/headless-inspector-cdp": "1.0.2",
-    "express": "4.19.2",
+    "express": "4.21.1",
     "ts-loader": "9.5.1",
     "webpack": "5.94.0",
     "webpack-cli": "5.1.4",
