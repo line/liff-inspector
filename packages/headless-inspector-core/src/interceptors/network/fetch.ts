@@ -15,8 +15,16 @@ export const createFetchApiHandler = (
 
       const input = argumentsList[0];
       const init = argumentsList[1];
-      const url = typeof input === 'string' ? input : input.url;
-      const method = typeof input === 'string' ? init?.method : input.method;
+      const url =
+        typeof input === 'string'
+          ? input
+          : input instanceof URL
+          ? input.toString()
+          : input.url;
+      const method =
+        typeof input === 'string' || input instanceof URL
+          ? init?.method
+          : input.method;
       // TODO: create headers
       // const _reqHeaders =
       //   typeof input === 'string' ? init?.headers : input.headers;
