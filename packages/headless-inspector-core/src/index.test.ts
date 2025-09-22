@@ -13,16 +13,16 @@ describe('enable', () => {
   it('should call interceptores when enable() is called', () => {
     const inspector = new HeadlessInspector();
     inspector.enable();
-    expect(mockedInterceptConsole).toBeCalledTimes(1);
-    expect(mockedInterceptNetwork).toBeCalledTimes(1);
+    expect(mockedInterceptConsole).toHaveBeenCalledTimes(1);
+    expect(mockedInterceptNetwork).toHaveBeenCalledTimes(1);
   });
   it('should call interceptores once event if enable() is called at multple times', () => {
     const inspector = new HeadlessInspector();
     inspector.enable();
     inspector.enable();
     inspector.enable();
-    expect(mockedInterceptConsole).toBeCalledTimes(1);
-    expect(mockedInterceptNetwork).toBeCalledTimes(1);
+    expect(mockedInterceptConsole).toHaveBeenCalledTimes(1);
+    expect(mockedInterceptNetwork).toHaveBeenCalledTimes(1);
   });
 });
 

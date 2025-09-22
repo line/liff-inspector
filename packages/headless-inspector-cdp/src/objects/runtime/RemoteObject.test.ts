@@ -41,7 +41,7 @@ describe('RemoteObject', () => {
   });
 
   it('should throw an error if object id is missing', () => {
-    expect(() => new RemoteObject(Symbol('AAA'))).toThrowError(
+    expect(() => new RemoteObject(Symbol('AAA'))).toThrow(
       'Symbol(AAA) should have objectId in RemoteObject'
     );
   });
