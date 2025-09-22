@@ -24,10 +24,10 @@ describe('ObjectPreview', () => {
   });
 
   it('should throw an error if a primitive value is given', () => {
-    expect(() => new ObjectPreview(1, true)).toThrowError(
+    expect(() => new ObjectPreview(1, true)).toThrow(
       'ObjectPreview accepts object type only. given 1'
     );
-    expect(() => new ObjectPreview('a', true)).toThrowError(
+    expect(() => new ObjectPreview('a', true)).toThrow(
       'ObjectPreview accepts object type only. given a'
     );
   });

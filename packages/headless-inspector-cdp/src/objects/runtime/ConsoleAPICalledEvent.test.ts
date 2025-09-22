@@ -13,7 +13,7 @@ describe('ConsoleAPICalledEvent', () => {
     expect(JSON.stringify(params)).toBe(
       '{"args":[{"type":"string","value":"a"},{"type":"number","value":1,"description":"1"},{"type":"object","objectId":"id","className":"Object","description":"Object","preview":{"overflow":false,"properties":[{"name":"a","type":"string","value":"v"}],"type":"object","description":"Object"}}],"type":"log","timestamp":100,"executionContextId":1}'
     );
-    expect(getObjectId).toBeCalledWith(obj);
-    expect(getObjectId).toBeCalledTimes(1);
+    expect(getObjectId).toHaveBeenCalledWith(obj);
+    expect(getObjectId).toHaveBeenCalledTimes(1);
   });
 });
