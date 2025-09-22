@@ -5,8 +5,6 @@ import { createXHRHandler } from './xhr';
 export const interceptNetwork = (emitter: InspectorEventEmitter): void => {
   if (window.fetch) {
     const handler = createFetchApiHandler(emitter);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     window.fetch = new Proxy(window.fetch, handler);
   }
   if (window.XMLHttpRequest) {

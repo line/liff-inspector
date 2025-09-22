@@ -23,7 +23,7 @@
     "ws": "8.18.0"
   },
   "devDependencies": {
-    "@line/liff": "2.19.0",
+    "@line/liff": "2.27.2",
     "@types/express": "4.17.21",
     "@types/ws": "8.5.12"
   },
