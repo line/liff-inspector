@@ -6,9 +6,9 @@
 </div>
 <br>
 
-LIFF Inspector is the official DevTools for LIFF(LNE Frontend Framework) that is integrated with the latest ChromeDevTools and built on top of the ChromeDevTools Protocol.
+LIFF Inspector is the official DevTools for LIFF (LINE Front-end Framework) that is integrated with the latest Chrome DevTools and built on top of the Chrome DevTools Protocol.
 
-| LIFF browser                                                                                                    | ChromeDevTools                                                                                                  |
+| LIFF browser                                                                                                    | Chrome DevTools                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | ![image](https://user-images.githubusercontent.com/22386678/164411108-526320d6-75f3-42a7-93a1-737c3deb23ff.png) | ![image](https://user-images.githubusercontent.com/22386678/164409862-ed739dec-fe6a-4ecc-98af-fc433c5ba5d1.png) |
 
@@ -34,7 +34,7 @@ LIFF Inspector is the official DevTools for LIFF(LNE Frontend Framework) that is
 
 🌍 Remote debug
 
-🔬 Support `Elements`, `Console` and `NetWork` tabs of ChromeDevTools
+🔬 Support `Elements`, `Console` and `NetWork` tabs of Chrome DevTools
 
 ## Getting Started
 
@@ -43,7 +43,7 @@ LIFF Inspector consists of two components:
 - LIFF Inspector Server
 - LIFF Inspector Plugin
 
-LIFF Inspector Server is a server program that mediates communication between LIFF app and ChromeDevTools.
+LIFF Inspector Server is a server program that mediates communication between LIFF app and Chrome DevTools.
 LIFF Inspector Plugin is a [LIFF Plugin](https://developers.line.biz/en/docs/liff/liff-plugin/). LIFF Plugin is available in LIFF SDK v2.19.0 or later.
 
 ### 1. Start LIFF Inspector Server
@@ -77,7 +77,7 @@ liff.init({ liffId: 'liff-xxxx' }).then(() => {
 });
 ```
 
-### 4. Open ChromeDevTools
+### 4. Open Chrome DevTools
 
 After `liff.init`, LIFF Inspector Server shows the devtools URL for your LIFF App in console.
 
@@ -180,7 +180,7 @@ See https://github.com/cola119/liff-inspector-example
     - [x] `XMLHttpRequest`
     - [ ] `sendBeacon()`
     - [ ] others
-  - Others(JS/CSS/Img/Media/Font...)
+  - Others (JS/CSS/Img/Media/Font...)
     - Technically difficult to intercept them...
 
 ### Application Tab

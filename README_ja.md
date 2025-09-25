@@ -4,9 +4,9 @@
 </div>
 <br>
 
-LIFF Inspector は LIFF(LNE Frontend Framework)専用の公式 DevTools です。LIFF Inspector は ChromeDevTools Protocol に準拠し、最新の ChromeDevTools と連携しています。
+LIFF Inspector は LIFF (LINE Front-end Framework) 専用の公式 DevTools です。LIFF Inspector は Chrome DevTools Protocol に準拠し、最新の Chrome DevTools と連携しています。
 
-| LIFF browser                                                                                                    | ChromeDevTools                                                                                                  |
+| LIFF browser                                                                                                    | Chrome DevTools                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | ![image](https://user-images.githubusercontent.com/22386678/164411108-526320d6-75f3-42a7-93a1-737c3deb23ff.png) | ![image](https://user-images.githubusercontent.com/22386678/164409862-ed739dec-fe6a-4ecc-98af-fc433c5ba5d1.png) |
 
@@ -32,7 +32,7 @@ LIFF Inspector は LIFF(LNE Frontend Framework)専用の公式 DevTools です�
 
 🌍 リモートデバッグ機能
 
-🔬 ChromeDevTools の `Elements`,`Console`,`NetWork` タブをサポート
+🔬 Chrome DevTools の `Elements`,`Console`,`NetWork` タブをサポート
 
 ## Getting Started
 
@@ -41,7 +41,7 @@ LIFF Inspector は２つのコンポーネントから構成されています�
 - LIFF Inspector Server
 - LIFF Inspector Plugin
 
-LIFF Inspector Server は LIFF アプリと ChromeDevTools の通信を中継するサーバーです。
+LIFF Inspector Server は LIFF アプリと Chrome DevTools の通信を中継するサーバーです。
 LIFF Inspector Plugin は [LIFF Plugin](https://developers.line.biz/en/docs/liff/liff-plugin/) です。 LIFF Plugin は LIFF SDK v2.19.0 以降から利用可能です。
 
 ### 1. LIFF Inspector Server を起動する
@@ -75,7 +75,7 @@ liff.init({ liffId: 'liff-xxxx' }).then(() => {
 });
 ```
 
-### 4. ChromeDevTools を開く
+### 4. Chrome DevTools を開く
 
 `liff.init`完了後、LIFF Inspector Server は devtools の URL をコンソールに表示します。
 
@@ -135,7 +135,7 @@ Or
 
 ### 優先順位
 
-LIFF Inspector Plugin `li.origin`クエリ (1)、 `origin` 設定 (2)の優先順位で URL を使用します。
+LIFF Inspector Plugin `li.origin`クエリ (1)、 `origin` 設定 (2) の優先順位で URL を使用します。
 
 (疑似コード)
 
@@ -179,7 +179,7 @@ See https://github.com/cola119/liff-inspector-example
     - [x] `XMLHttpRequest`
     - [ ] `sendBeacon()`
     - [ ] others
-  - Others(JS/CSS/Img/Media/Font...)
+  - Others (JS/CSS/Img/Media/Font...)
     - Technically difficult to intercept them...
 
 ### Application Tab
