@@ -1,0 +1,92 @@
+name: Create Release PR
+on:
+  workflow_dispatch:
+    inputs:
+      semver:
+        description: 'New Version(semver)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  GH_HOST: github.com
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .nvmrc
+      - name: Update Version
+        run: |
+          git config --global user.email "${GIT_AUTHOR_EMAIL}"
+          git config --global user.name "${GIT_AUTHOR_NAME}"
+          npm run ci:versionup:${SEMVER}
+        env:
+          SEMVER: ${{ github.event.inputs.semver }}
+          GIT_AUTHOR_NAME: ${{ github.actor }}
+          GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
+      - name: Set PACKAGE_VERSION
+        run: echo "PACKAGE_VERSION=$(cat package.json | jq -r .version)" >> $GITHUB_ENV
+      - name: Set GitHub Release Note
+        id: release_note
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        with:
+          script: |
+            const result = await exec.getExecOutput(`gh api "/repos/${process.env.GITHUB_REPOSITORY}/releases/generate-notes" -f tag_name="v${process.env.PACKAGE_VERSION}" --jq .body`, [], {
+              ignoreReturnCode: true,
+            })
+            core.setOutput('stdout', result.stdout)
+        env:
+          PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(release): v${{ env.PACKAGE_VERSION }}'
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          assignees: ${{ github.actor }}
+          signoff: false
+          branch: release/${{ env.PACKAGE_VERSION }}
+          branch-suffix: timestamp
+          delete-branch: true
+          title: 'v${{ env.PACKAGE_VERSION }}'
+          body: |
+            ${{ steps.release_note.outputs.stdout }}
+          labels: 'type: release'
+      - name: Check Pull Request
+        run: |
+          echo "Pull Request Number - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER}"
+          echo "Pull Request URL - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_URL}"
+        env:
+          STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+          STEPS_CPR_OUTPUTS_PULL_REQUEST_URL: ${{ steps.cpr.outputs.pull-request-url }}
+      - name: Display CI trigger instructions
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "::notice::⚠️ GitHub Actions cannot trigger CI on PRs created with GITHUB_TOKEN"
+          echo "::notice::To trigger CI, please do one of the following:"
+          echo "::notice::1. Close and reopen the PR"
+          echo "::notice::2. Push an empty commit manually:"
+          echo "::notice::   gh pr checkout ${STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER}"
+          echo "::notice::   git commit --allow-empty -m 'Trigger CI'"
+          echo "::notice::   git push"
+          echo "::notice::3. Or use Personal Access Token (PAT) instead of GITHUB_TOKEN"
+        env:
+          STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}

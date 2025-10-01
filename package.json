@@ -1,5 +1,6 @@
 {
   "name": "liff-inspector",
+  "version": "1.0.2",
   "workspaces": [
     "packages/headless-inspector-core",
     "packages/headless-inspector-cdp",
@@ -18,7 +19,13 @@
     "format:fix": "prettier --write .",
     "test:watch": "npm run test -- --watch",
     "code-check": "npm run lint && npm run build && npm run test",
-    "publish": "npm run code-check && npm run build && npm publish -ws --access public"
+    "versionup": "echo 'Error: Please use CI for versioning. Run the GitHub Actions workflow instead.' && exit 1",
+    "release": "echo 'Error: Please use CI for releases. Run the GitHub Actions workflow instead.' && exit 1",
+    "ci:versionup:patch": "npm version patch --no-git-tag-version && npm --workspaces --include-workspace-root=false exec -- npm pkg set version=\"$(node -p \"require('./package.json').version\")\" && npm run commit-version",
+    "ci:versionup:minor": "npm version minor --no-git-tag-version && npm --workspaces --include-workspace-root=false exec -- npm pkg set version=\"$(node -p \"require('./package.json').version\")\" && npm run commit-version",
+    "ci:versionup:major": "npm version major --no-git-tag-version && npm --workspaces --include-workspace-root=false exec -- npm pkg set version=\"$(node -p \"require('./package.json').version\")\" && npm run commit-version",
+    "commit-version": "git add . && git commit -m \"chore(release): v$(node -p 'require(\"./package.json\").version')\"",
+    "ci:release": "npm publish -ws --access public"
   },
   "devDependencies": {
     "@types/jest": "27.4.1",
