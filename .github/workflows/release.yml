@@ -53,6 +53,8 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    environment:
+      name: npm
     needs: check
     if: always() && (needs.check.outputs.EXISTS_TAG == 'false')
     permissions:
