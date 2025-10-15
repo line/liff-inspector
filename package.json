@@ -21,11 +21,14 @@
     "code-check": "npm run lint && npm run build && npm run test",
     "versionup": "echo 'Error: Please use CI for versioning. Run the GitHub Actions workflow instead.' && exit 1",
     "release": "echo 'Error: Please use CI for releases. Run the GitHub Actions workflow instead.' && exit 1",
-    "ci:versionup:patch": "npm version patch --no-git-tag-version && npm --workspaces --include-workspace-root=false exec -- npm pkg set version=\"$(node -p \"require('./package.json').version\")\" && npm run commit-version",
-    "ci:versionup:minor": "npm version minor --no-git-tag-version && npm --workspaces --include-workspace-root=false exec -- npm pkg set version=\"$(node -p \"require('./package.json').version\")\" && npm run commit-version",
-    "ci:versionup:major": "npm version major --no-git-tag-version && npm --workspaces --include-workspace-root=false exec -- npm pkg set version=\"$(node -p \"require('./package.json').version\")\" && npm run commit-version",
-    "commit-version": "git add . && git commit -m \"chore(release): v$(node -p 'require(\"./package.json\").version')\"",
-    "ci:release": "npm publish -ws --access public"
+    "ci:versionup:patch": "npm version patch --no-git-tag-version && npm run ci:update-package-versions && npm run ci:update-internal-deps",
+    "ci:versionup:minor": "npm version minor --no-git-tag-version && npm run ci:update-package-versions && npm run ci:update-internal-deps",
+    "ci:versionup:major": "npm version major --no-git-tag-version && npm run ci:update-package-versions && npm run ci:update-internal-deps",
+    "ci:update-package-versions": "npm --workspaces --include-workspace-root=false exec -- npm pkg set version=\"$(npm run -s print-version)\"",
+    "ci:update-internal-deps": "node --experimental-strip-types scripts/update-internal-deps.ts $(npm run -s print-version)",
+    "commit-version": "git add . && git commit -m \"chore(release): v$(npm run -s print-version)\"",
+    "ci:release": "npm publish -ws --access public",
+    "print-version": "node -p \"require('./package.json').version\""
   },
   "devDependencies": {
     "@types/jest": "27.4.1",
@@ -39,5 +42,9 @@
     "prettier": "2.6.2",
     "ts-jest": "29.4.3",
     "typescript": "5.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/line/liff-inspector.git"
   }
 }
