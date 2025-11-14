@@ -1,6 +1,6 @@
 {
   "name": "@line/liff-inspector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/index.js",
   "unpkg": "dist/umd/liff-inspector.js",
@@ -14,8 +14,8 @@
     "README.md"
   ],
   "dependencies": {
-    "@line/headless-inspector": "1.0.2",
-    "@line/headless-inspector-cdp": "1.0.2",
+    "@line/headless-inspector": "1.0.3",
+    "@line/headless-inspector-cdp": "1.0.3",
     "express": "4.21.1",
     "ts-loader": "9.5.1",
     "webpack": "5.94.0",
