@@ -1,6 +1,6 @@
 {
   "name": "@line/headless-inspector-core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -9,7 +9,6 @@
     "package.json",
     "README.md"
   ],
-  "devDependencies": {},
   "scripts": {
     "clean": "rm -rf dist ./tsconfig.tsbuildinfo",
     "build": "tsc",
