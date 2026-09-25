@@ -42,7 +42,7 @@ jobs:
           GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
       - name: Update package-lock.json
         run: |
-          npm install
+          npm install --package-lock-only
       - name: Commit version update
         run: |
           npm run commit-version
